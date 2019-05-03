@@ -133,7 +133,7 @@ function move() {
 			}
 		}
 		for (let n = 1; n < 11; n++) {
-			if (document.querySelector(`[posX="${n}"][posY="15"]`).classList.contains('set')) {
+			if (document.querySelector(`[posX="${n}"][posY="21"]`).classList.contains('set')) {
 				clearInterval(interval);
 				alert(`GAME OVER. YOUR SCORE: ${score}`);
 				break;
