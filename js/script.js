@@ -27,7 +27,7 @@ let tetris = document.createElement('div'),
 		input = document.getElementsByTagName('input')[0];
 tetris.classList.add('tetris');
 
-for (let i = 0; i < 180; i++) {
+for (let i = 0; i < 240; i++) {
 	let excel = document.createElement('div');
 	excel.classList.add('excel');
 	tetris.appendChild(excel);
@@ -38,7 +38,7 @@ main.appendChild(tetris);
 
 let excel = document.getElementsByClassName('excel');
 
-for (let y = 18; y > 0; y--) {
+for (let y = 24; y > 0; y--) {
 	for (let x = 1; x < 11; x++) {
 		excel[i].setAttribute('posX', x);
 		excel[i].setAttribute('posY', y);
@@ -46,9 +46,213 @@ for (let y = 18; y > 0; y--) {
 	}
 }
 
-let x = 5, y = 15;
-let mainArr=[[[0,1],[0,2],[0,3],[[-1,1],[0,0],[1,-1],[2,-2]],[[1,-1],[0,0],[-1,1],[-2,2]],[[-1,1],[0,0],[1,-1],[2,-2]],[[1,-1],[0,0],[-1,1],[-2,2]]],[[1,0],[0,1],[1,1],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]],[[1,0],[0,1],[0,2],[[0,0],[-1,1],[1,0],[2,-1]],[[1,0],[1,0],[-1,1],[-1,1]],[[-1,0],[0,-1],[2,-2],[1,-1]],[[0,0],[0,0],[-2,1],[-2,1]]],[[1,0],[1,1],[1,2],[[0,0],[0,0],[1,-1],[-1,-1]],[[0,0],[-1,1],[-2,2],[1,1]],[[2,0],[0,0],[1,-1],[1,-1]],[[-2,1],[1,0],[0,1],[-1,2]]],[[1,0],[-1,1],[0,1],[[0,-1],[-1,0],[2,-1],[1,0]],[[0,0],[1,-1],[-2,0],[-1,-1]],[[0,-1],[-1,0],[2,-1],[1,0]],[[0,0],[1,-1],[-2,0],[-1,-1]]],[[1,0],[1,1],[2,1],[[2,-1],[0,0],[1,-1],[-1,0]],[[-2,0],[0,-1],[-1,0],[1,-1]],[[2,-1],[0,0],[1,-1],[-1,0]],[[-2,0],[0,-1],[-1,0],[1,-1]]],[[1,0],[2,0],[1,1],[[1,-1],[0,0],[0,0],[0,0]],[[0,0],[-1,0],[-1,0],[1,-1]],[[1,-1],[1,-1],[1,-1],[0,0]],[[-2,0],[0,-1],[0,-1],[-1,-1]]]];
-
+let x = 5, y = 21;
+// All figures
+let mainArr = [
+	[
+			[0, 1],
+			[0, 2],
+			[0, 3],
+			[
+					[-1, 1],
+					[0, 0],
+					[1, -1],
+					[2, -2]
+			],
+			[
+					[1, -1],
+					[0, 0],
+					[-1, 1],
+					[-2, 2]
+			],
+			[
+					[-1, 1],
+					[0, 0],
+					[1, -1],
+					[2, -2]
+			],
+			[
+					[1, -1],
+					[0, 0],
+					[-1, 1],
+					[-2, 2]
+			]
+	],
+	[
+			[1, 0],
+			[0, 1],
+			[1, 1],
+			[
+					[0, 0],
+					[0, 0],
+					[0, 0],
+					[0, 0]
+			],
+			[
+					[0, 0],
+					[0, 0],
+					[0, 0],
+					[0, 0]
+			],
+			[
+					[0, 0],
+					[0, 0],
+					[0, 0],
+					[0, 0]
+			],
+			[
+					[0, 0],
+					[0, 0],
+					[0, 0],
+					[0, 0]
+			]
+	],
+	[
+			[1, 0],
+			[0, 1],
+			[0, 2],
+			[
+					[0, 0],
+					[-1, 1],
+					[1, 0],
+					[2, -1]
+			],
+			[
+					[1, 0],
+					[1, 0],
+					[-1, 1],
+					[-1, 1]
+			],
+			[
+					[-1, 0],
+					[0, -1],
+					[2, -2],
+					[1, -1]
+			],
+			[
+					[0, 0],
+					[0, 0],
+					[-2, 1],
+					[-2, 1]
+			]
+	],
+	[
+			[1, 0],
+			[1, 1],
+			[1, 2],
+			[
+					[0, 0],
+					[0, 0],
+					[1, -1],
+					[-1, -1]
+			],
+			[
+					[0, 0],
+					[-1, 1],
+					[-2, 2],
+					[1, 1]
+			],
+			[
+					[2, 0],
+					[0, 0],
+					[1, -1],
+					[1, -1]
+			],
+			[
+					[-2, 1],
+					[1, 0],
+					[0, 1],
+					[-1, 2]
+			]
+	],
+	[
+			[1, 0],
+			[-1, 1],
+			[0, 1],
+			[
+					[0, -1],
+					[-1, 0],
+					[2, -1],
+					[1, 0]
+			],
+			[
+					[0, 0],
+					[1, -1],
+					[-2, 0],
+					[-1, -1]
+			],
+			[
+					[0, -1],
+					[-1, 0],
+					[2, -1],
+					[1, 0]
+			],
+			[
+					[0, 0],
+					[1, -1],
+					[-2, 0],
+					[-1, -1]
+			]
+	],
+	[
+			[1, 0],
+			[1, 1],
+			[2, 1],
+			[
+					[2, -1],
+					[0, 0],
+					[1, -1],
+					[-1, 0]
+			],
+			[
+					[-2, 0],
+					[0, -1],
+					[-1, 0],
+					[1, -1]
+			],
+			[
+					[2, -1],
+					[0, 0],
+					[1, -1],
+					[-1, 0]
+			],
+			[
+					[-2, 0],
+					[0, -1],
+					[-1, 0],
+					[1, -1]
+			]
+	],
+	[
+			[1, 0],
+			[2, 0],
+			[1, 1],
+			[
+					[1, -1],
+					[0, 0],
+					[0, 0],
+					[0, 0]
+			],
+			[
+					[0, 0],
+					[-1, 0],
+					[-1, 0],
+					[1, -1]
+			],
+			[
+					[1, -1],
+					[1, -1],
+					[1, -1],
+					[0, 0]
+			],
+			[
+					[-2, 0],
+					[0, -1],
+					[0, -1],
+					[-1, -1]
+			]
+	]
+];
 function create() {
 	function getRandom() {
 		return Math.round(Math.random()*(mainArr.length-1));
@@ -64,7 +268,7 @@ function create() {
 		document.querySelector(`[posX = "${x + mainArr[currentFigure][2][0]}"][posY = "${y + mainArr[currentFigure][2][1]}"]`)
 	];
 	for (let i = 0; i < figureBody.length; i++) {
-		figureBody[i].classList.add('figure');
+		figureBody[i].classList.add('figure', 'color-' + currentFigure);
 	}
 }
 create();
@@ -87,7 +291,7 @@ function move() {
 
 	if (moveFlag) {
 		for (let i = 0; i < figureBody.length; i++) {
-			figureBody[i].classList.remove('figure');
+			figureBody[i].classList.remove('figure', 'color-' + currentFigure);
 		}
 		figureBody = [
 			document.querySelector(`[posX = "${coordinates[0][0]}"][posY = "${coordinates[0][1] - 1}"]`),
@@ -96,35 +300,51 @@ function move() {
 			document.querySelector(`[posX = "${coordinates[3][0]}"][posY = "${coordinates[3][1] - 1}"]`),
 		];
 		for (let i = 0; i < figureBody.length; i++) {
-			figureBody[i].classList.add('figure');
+			figureBody[i].classList.add('figure', 'color-' + currentFigure);
 		}
 	} else {
+		// Остановка
 		for (let i = 0; i < figureBody.length; i++) {
 			figureBody[i].classList.remove('figure');
 			figureBody[i].classList.add('set');
 		}
-		for (let i = 1; i < 15; i++) {
+		score += 1;
+		input.value = `Your score: ${score}`;
+		// Линия собрана
+		for (let i = 1; i < 21; i++) {
 			let count = 0;
 			for (let k = 1; k < 11; k++) {
 				if (document.querySelector(`[posX="${k}"][posY="${i}"]`).classList.contains('set')) {
 					count++;
 					if (count == 10) {
-						score += 1000;
+						score += 10;
 						input.value = `Your score: ${score}`;
+						// Удаление линии
 						for (let m = 1; m < 11; m++) {
-							document.querySelector(`[posX="${m}"][posY="${i}"]`).classList.remove('set');
+							document.querySelector(`[posX="${m}"][posY="${i}"]`).classList.remove('set', 'color-0', 'color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6');
 						}
+						// Перемещаем все вниз
 						let set = document.querySelectorAll('.set');
 						let newSet = [];
+						let colors = [];
 						for (let s = 0; s < set.length; s++){
 							let setCoordinates = [set[s].getAttribute('posX'), set[s].getAttribute('posY')];
 							if (setCoordinates[1] > i) {
+								colors.push();
+								if(set[s].classList.contains('color-0')) {colors.push('color-0'); set[s].classList.remove('color-0');}
+								else if(set[s].classList.contains('color-1')) {colors.push('color-1'); set[s].classList.remove('color-1');}
+								else if(set[s].classList.contains('color-2')) {colors.push('color-2'); set[s].classList.remove('color-2');}
+								else if(set[s].classList.contains('color-3')) {colors.push('color-3'); set[s].classList.remove('color-3');}
+								else if(set[s].classList.contains('color-4')) {colors.push('color-4'); set[s].classList.remove('color-4');}
+								else if(set[s].classList.contains('color-5')) {colors.push('color-5'); set[s].classList.remove('color-5');}
+								else if(set[s].classList.contains('color-6')) {colors.push('color-6'); set[s].classList.remove('color-6');}
 								set[s].classList.remove('set');
 								newSet.push(document.querySelector(`[posX="${setCoordinates[0]}"][posY="${setCoordinates[1]-1}"]`));
+								console.log(colors);
 							}
 						}
 						for (let a = 0; a < newSet.length; a++) {
-							newSet[a].classList.add('set');
+							newSet[a].classList.add('set', colors[a]);
 						}
 						i--;
 					}
@@ -132,7 +352,7 @@ function move() {
 			}
 		}
 		for (let n = 1; n < 11; n++) {
-			if (document.querySelector(`[posX="${n}"][posY="15"]`).classList.contains('set')) {
+			if (document.querySelector(`[posX="${n}"][posY="21"]`).classList.contains('set')) {
 				clearInterval(interval);
 				alert(`GAME OVER. YOUR SCORE: ${score}`);
 				break;
@@ -173,13 +393,13 @@ window.addEventListener('keydown', function (e) {
 
 		if (flag) {
 			for (let i = 0; i < figureBody.length; i++) {
-				figureBody[i].classList.remove('figure');
+				figureBody[i].classList.remove('figure', 'color-' + currentFigure);
 			}
 
 			figureBody = figureNew;
 
 			for (let i = 0; i < figureBody.length; i++) {
-				figureBody[i].classList.add('figure');
+				figureBody[i].classList.add('figure', 'color-' + currentFigure);
 			}
 		}
 	}
@@ -208,13 +428,13 @@ window.addEventListener('keydown', function (e) {
 
 		if (flag) {
 			for (let i = 0; i < figureBody.length; i++) {
-				figureBody[i].classList.remove('figure');
+				figureBody[i].classList.remove('figure', 'color-' + currentFigure);
 			}
 
 			figureBody = figureNew;
 
 			for (let i = 0; i < figureBody.length; i++) {
-				figureBody[i].classList.add('figure');
+				figureBody[i].classList.add('figure', 'color-' + currentFigure);
 			}
 
 			if (rotate < 4){

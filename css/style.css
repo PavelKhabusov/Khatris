@@ -1,17 +1,37 @@
+@keyframes bgrandom {
+  0% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.98) 50%, rgba(255, 255, 255, 0.96) 0%);
+  }
+  50% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.98) 50%, rgba(255, 255, 255, 0.96) 0%);
+  }
+  55% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 50%, rgba(255, 255, 255, 0.98) 0%);
+  }
+  80% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 50%, rgba(255, 255, 255, 0.98) 0%);
+  }
+  85% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 50%, rgba(255, 255, 255, 0.94) 0%);
+  }
+  100% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 50%, rgba(255, 255, 255, 0.94) 0%);
+  }
+}
 * {
   margin: 0;
   padding: 0;
   font-family: 'Roboto';
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          transition: .3s;
+  box-sizing: border-box;
 }
-
+html {
+  font-size: 7px;
+}
 body {
-  background: linear-gradient(to top, #191919, #ccc) center center no-repeat;
+  background: #000;
   color: #fff;
 }
-h1{
+h1 {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -21,14 +41,13 @@ h1{
   margin: 100px auto 0;
   position: relative;
   overflow: hidden;
-  width: 500px;
-  height: 700px;
-  border: 2px solid #191919;
-  background-color: #fff;
+  width: 50rem;
+  height: 100rem;
+  background-color: #021c2d;
 }
 .tetris {
-  width: 500px;
-  height: 900px;
+  width: 50rem;
+  height: 120rem;
   display: flex;
   overflow: hidden;
   flex-wrap: wrap;
@@ -36,24 +55,56 @@ h1{
   bottom: 0;
 }
 .excel {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #ccc;
+  width: 5rem;
+  height: 5rem;
 }
-.figure, .set {
-  background-color: #282828;
+.excel:nth-child(even) {
+  background-color: #00253f;
+}
+.excel.figure,
+.excel.set {
+  position: relative;
+  border: 1px solid #021c2d;
+}
+.excel.figure::after,
+.excel.set::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-top: .8rem solid #fff;
+  border-left: .8rem solid #fff;
+  border-right: .8rem solid transparent;
+  border-bottom: .8rem solid transparent;
+}
+.excel.color-0 {
+  background-color: #ffb901 !important;
+}
+.excel.color-1 {
+  background-color: #e94659 !important;
+}
+.excel.color-2 {
+  background-color: #2753f0 !important;
+}
+.excel.color-3 {
+  background-color: #f8ff01 !important;
+}
+.excel.color-4 {
+  background-color: #10c5be !important;
+}
+.excel.color-5 {
+  background-color: #ff6628 !important;
+}
+.excel.color-6 {
+  background-color: #ae82fe !important;
 }
 input {
   display: block;
   margin: 50px auto;
   font-size: 30px;
   padding: 10px;
-}
-.controls {
-  padding: 20px;
-  position: absolute;
-  top: 200px;
-  right: 200px;
 }
 .modal {
   position: fixed;
@@ -71,6 +122,10 @@ input {
   justify-content: center;
   border-radius: 20px;
 }
+.modal h2 {
+  color: #000;
+  font-size: 32px;
+}
 .button {
   color: #282828;
   border: 2px solid #282828;
@@ -80,7 +135,6 @@ input {
   padding: 30px 0;
   cursor: pointer;
   font-size: 25px;
-  transition: all .3s;
 }
 .button:hover {
   border-radius: 40px;
@@ -92,5 +146,5 @@ input {
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: linear-gradient(to top, #191919, #ccc) no-repeat;
+  background: #000;
 }
